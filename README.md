@@ -75,21 +75,22 @@ After this, PocketBase will start automatically on reboot
 
 
 
-### every time you want change something just go to change push it to github then in vps
- cd to forder /pb
-```
-git pull 
-```
-
+### every time you want change something just go to change push it to github 
 ### example Update PocketBase to new version vx.xx
+
 Download the new PocketBase Linux binary.
- -------REMEMBER DOWNLOAD CORRECT VERSION  FOR LINUX x64  ------
+>>>  -------REMEMBER DOWNLOAD CORRECT VERSION  FOR LINUX x64  ------
 example pocketbase_0.29.0_linux_amd64.zip
 Replace the old pocketbase linux in your Git repository folder.
 Commit and push the change to GitHub with commit like  "Update PocketBase to v0.xx"
 Then in the vps
+cd to pb
+Stop the running PocketBase service 
+Overwrite local changes (safe because our Git repo only tracks the binary)This discards your local binary changes and pulls the version from GitHub:git reset --hard
 ```
 cd pb
+sudo systemctl stop pocketbase.service
+git reset --hard
 git pull
 chmod +x pocketbase 
 sudo systemctl restart pocketbase.service
