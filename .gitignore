@@ -1,0 +1,20 @@
+#.gitignore
+ 
+# =========================
+# PocketBase Project Ignore
+# =========================
+
+# PocketBase data (database, uploaded files)
+pb_data/
+pb_public/
+
+# PocketBase logs
+pb_logs/ 
+ 
+# Build artifacts
+dist/
+build/ 
+
+# OS junk
+.DS_Store
+Thumbs.db
