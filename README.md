@@ -1,8 +1,8 @@
 
 
 
-# khi tạo vps mới phải dùng git đã authed để clone private repo này  
-# Set your name and email for git
+# Optional If you set repo as private => When creating a new VPS, you must use authenticated git to clone this private repo. 
+# Set your name and email for git .Replace by your
 ```
 git config --global user.name "rubito-jp" 
 git config --global user.email "rubitojp@gmail.com"
@@ -29,9 +29,12 @@ Settings → SSH and GPG keys → New SSH key → paste the key → Save.
 ssh -T git@github.com
 ```
 
-# in vps /root
+
+
+
+# in vps /root clone the repo 
 ```
- git clone git@github.com:rubito-jp/pb.git
+ git clone https://github.com/rubito-jp/pb.git
  cd pb
   sudo nano /lib/systemd/system/pocketbase.service
  ```
