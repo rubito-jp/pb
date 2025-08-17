@@ -18,3 +18,7 @@ build/
 # OS junk
 .DS_Store
 Thumbs.db
+
+#windows
+pocketbase.exe
+
