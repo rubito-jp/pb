@@ -29,3 +29,46 @@ Settings → SSH and GPG keys → New SSH key → paste the key → Save.
 ssh -T git@github.com
 ```
 
+# in vps /root
+```
+ git clone git@github.com:rubito-jp/pb.git
+ cd pb
+  sudo nano /lib/systemd/system/pocketbase.service
+ ```
+
+ # Paste this (adjust for your subdomain)
+
+```  
+[Unit]
+Description=PocketBase Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+LimitNOFILE=4096
+Restart=always
+RestartSec=5s
+StandardOutput=append:/root/pb/std.log
+StandardError=append:/root/pb/std.log
+WorkingDirectory=/root/pb
+ExecStart=/root/pb/pocketbase serve test-xoa-sau.lacchinh.com
+
+[Install]
+WantedBy=multi-user.target
+
+```
+Save and exit
+
+In nano: press Ctrl+O, Enter, then Ctrl+X.
+
+Reload systemd and enable the service
+
+ ```
+sudo systemctl daemon-reload
+sudo systemctl enable pocketbase.service
+sudo systemctl start pocketbase.service
+sudo systemctl status pocketbase.service
+```
+After this, PocketBase will start automatically on reboot 
