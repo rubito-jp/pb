@@ -36,7 +36,7 @@ ssh -T git@github.com
   sudo nano /lib/systemd/system/pocketbase.service
  ```
 
- # Paste this (adjust for your subdomain)
+ # Paste this (adjust test-xoa-sau.lacchinh.com by your subdomain)
 
 ```  
 [Unit]
@@ -72,3 +72,27 @@ sudo systemctl start pocketbase.service
 sudo systemctl status pocketbase.service
 ```
 After this, PocketBase will start automatically on reboot 
+
+
+
+### every time you want change something just go to change push it to github then in vps
+ cd to forder /pb
+```
+git pull 
+```
+
+### example Update PocketBase to new version vx.xx
+Download the new PocketBase Linux binary.
+ -------REMEMBER DOWNLOAD CORRECT VERSION  FOR LINUX x64  ------
+example pocketbase_0.29.0_linux_amd64.zip
+Replace the old pocketbase linux in your Git repository folder.
+Commit and push the change to GitHub with commit like  "Update PocketBase to v0.xx"
+Then in the vps
+```
+cd pb
+git pull
+chmod +x pocketbase 
+sudo systemctl restart pocketbase.service
+sudo systemctl status pocketbase.service
+```
+Your PocketBase service will now be updated to the new version.
